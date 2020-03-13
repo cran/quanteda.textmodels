@@ -1,7 +1,7 @@
 Package: quanteda.textmodels
 Type: Package
 Title: Scaling Models and Classifiers for Textual Data
-Version: 0.9.0
+Version: 0.9.1
 Description: Scaling models and classifiers for sparse matrix objects representing 
     textual data in the form of a document-feature matrix.  Includes original 
     implementations of 'Laver', 'Benoit', and Garry's (2003) <doi:10.1017/S0003055403000698>,
@@ -23,7 +23,8 @@ Depends: R (>= 3.1.0), methods
 Imports: ggplot2, LiblineaR, Matrix (>= 1.2), quanteda (>= 2.0),
         RSpectra, Rcpp (>= 0.12.12), RcppParallel, RSSL, SparseM,
         stringi
-Suggests: ca, covr, knitr, lsa, spelling, RColorBrewer, testthat
+Suggests: ca, covr, fastNaiveBayes, knitr, lsa, microbenchmark,
+        naivebayes, spelling, RColorBrewer, testthat, rmarkdown
 LinkingTo: Rcpp, RcppParallel, RcppArmadillo (>= 0.7.600.1.0), quanteda
 URL: https://github.com/quanteda/quanteda.textmodels
 License: GPL-3
@@ -32,14 +33,15 @@ LazyData: true
 Language: en-GB
 RoxygenNote: 7.0.2
 SystemRequirements: C++11
-Collate: 'RcppExports.R' 'quanteda.textmodels-package.R' 'aaa.R'
-        'data-documentation.R' 'data.R' 'textmodel-methods.R'
+Collate: 'RcppExports.R' 'quanteda.textmodels-package.R'
+        'data-documentation.R' 'textmodel-methods.R'
         'textmodel_affinity.R' 'textmodel_ca.R' 'textmodel_lsa.R'
         'textmodel_nb.R' 'textmodel_svm.R' 'textmodel_svmlin.R'
         'textmodel_wordfish.R' 'textmodel_wordscores.R'
-        'textplot_influence.R' 'textplot_scale1d.R'
+        'textplot_influence.R' 'textplot_scale1d.R' 'utils.R'
+VignetteBuilder: knitr
 NeedsCompilation: yes
-Packaged: 2020-02-25 14:36:32 UTC; kbenoit
+Packaged: 2020-03-13 01:20:55 UTC; kbenoit
 Author: Kenneth Benoit [cre, aut, cph]
     (<https://orcid.org/0000-0002-0797-564X>),
   Kohei Watanabe [aut] (<https://orcid.org/0000-0001-6519-5265>),
@@ -51,4 +53,4 @@ Author: Kenneth Benoit [cre, aut, cph]
   European Research Council [fnd] (ERC-2011-StG 283794-QUANTESS)
 Maintainer: Kenneth Benoit <kbenoit@lse.ac.uk>
 Repository: CRAN
-Date/Publication: 2020-02-26 15:50:06 UTC
+Date/Publication: 2020-03-13 10:00:11 UTC

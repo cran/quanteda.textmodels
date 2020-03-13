@@ -1,8 +1,10 @@
+ACL
 Akitaka
 AppVeyor
 arXiv
 austin
 Benoit's
+codecov
 color
 Crowdflower
 csr
@@ -16,11 +18,13 @@ doi
 Dumais
 ERC
 Fáil
+fastNaiveBayes
 FG
 Furnas
 gfortran
 Greenacre
 Harshman
+Hinrich
 Hsieh
 INFOSYS
 io
@@ -32,9 +36,12 @@ LIBLINEAR
 Lifecycle
 lsa
 LSA
+Maas
 macOS
+Majka
 Matsuo
 Mikhaylov
+naivebayes
 nb
 Nenadic
 newdata's
@@ -44,7 +51,9 @@ ORCID
 org
 overplot
 pearson
+Pham
 Poisson
+Prabhakar
 Proksch
 Proksch's
 quanteda
@@ -55,6 +64,7 @@ Sathiya
 se
 SIGIR
 Sindhwani
+Skogholt
 Slapin
 SparseM
 StackOverflow
@@ -69,6 +79,7 @@ TDs
 termfreq
 textmodel
 textmodels
+th
 transductive
 underdispersed
 underdispersion
