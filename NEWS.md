@@ -1,3 +1,8 @@
+# quanteda.textmodels 0.9.2
+
+* Added a logistic regression classifier, `textmodel_lr()`.
+* Simplified `textmodel_svmlin()` to implement only the L2-SVM-MFN from Sindhwani and Keerthi (2006), and now uses the C++ code natively.
+
 # quanteda.textmodels 0.9.1
 
 * Adds `data_corpus_dailnoconf1991` and `data_corpus_irishbudget2010` corpus objects moved from the **quanteda** package.

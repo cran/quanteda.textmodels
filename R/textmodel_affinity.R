@@ -17,7 +17,7 @@
 #' @author Patrick Perry and Kenneth Benoit
 #' @references Perry, P.O. & Benoit, K.R. (2017). Scaling Text with
 #'   the Class Affinity Model.
-#'   [arXiv:1710.08963 \[stat.ML\]](http://arxiv.org/abs/1710.08963).
+#'   [arXiv:1710.08963 \[stat.ML\]](https://arxiv.org/abs/1710.08963).
 #' @examples
 #' (af <- textmodel_affinity(data_dfm_lbgexample, y = c("L", NA, NA, NA, "R", NA)))
 #' predict(af)
@@ -452,6 +452,8 @@ print.textmodel_affinity <- function(x, ...) {
 #' @return `predict()` returns a list of predicted affinity textmodel
 #'   quantities.
 #' @importFrom methods new
+#' @importFrom stats predict
+#' @method predict textmodel_affinity
 #' @keywords textmodel internal
 #' @seealso [influence.predict.textmodel_affinity()] for methods of
 #'   computing the influence of particular features from a predicted
