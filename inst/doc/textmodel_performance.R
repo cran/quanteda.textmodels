@@ -12,7 +12,8 @@ library("quanteda")
 # large movie review database of 50,000 movie reviews
 load(url("https://www.dropbox.com/s/sjdfmx8ggwfda5o/data_corpus_LMRD.rda?dl=1"))
 
-dfmat <- dfm(data_corpus_LMRD)
+dfmat <- tokens(data_corpus_LMRD) %>%
+  dfm()
 dfmat_train <- dfm_subset(dfmat, set == "train")
 dfmat_test <- dfm_subset(dfmat, set == "test")
 
@@ -21,7 +22,7 @@ library("microbenchmark")
 microbenchmark(
     multi = textmodel_nb(dfmat_train, dfmat_train$polarity, distribution = "multinomial"),
     bern = textmodel_nb(dfmat_train, dfmat_train$polarity, distribution = "Bernoulli"),
-    times = 50
+    times = 20
 )
 
 ## -----------------------------------------------------------------------------
@@ -30,7 +31,7 @@ microbenchmark(
                     newdata = dfmat_test),
     bern = predict(textmodel_nb(dfmat_train, dfmat_train$polarity, distribution = "Bernoulli"),
                    newdata = dfmat_test),
-    times = 50
+    times = 20
 )
 
 ## -----------------------------------------------------------------------------
@@ -50,7 +51,7 @@ microbenchmark(
       tmod = multinomial_naive_bayes(as(dfmat_train, "dgCMatrix"), dfmat_train$polarity, laplace = 1)
       pred <- predict(tmod, newdata = as(dfmat_test, "dgCMatrix"))
     },
-    times = 50
+    times = 20
 )
 
 ## -----------------------------------------------------------------------------
@@ -70,6 +71,6 @@ microbenchmark(
       tmod = bernoulli_naive_bayes(as(dfmat_train_bern, "dgCMatrix"), dfmat_train$polarity, laplace = 1)
       pred <- predict(tmod, newdata = as(dfmat_test_bern, "dgCMatrix"))
     },
-    times = 50
+    times = 20
 )
 

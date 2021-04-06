@@ -1,7 +1,7 @@
 Package: quanteda.textmodels
 Type: Package
 Title: Scaling Models and Classifiers for Textual Data
-Version: 0.9.3
+Version: 0.9.4
 Description: Scaling models and classifiers for sparse matrix objects representing 
     textual data in the form of a document-feature matrix.  Includes original 
     implementations of 'Laver', 'Benoit', and Garry's (2003) <doi:10.1017/S0003055403000698>,
@@ -25,8 +25,7 @@ Depends: R (>= 3.1.0), methods
 Imports: glmnet, LiblineaR, Matrix (>= 1.2), quanteda (>= 2.0),
         RSpectra, Rcpp (>= 0.12.12), RcppParallel, SparseM, stringi
 Suggests: ca, covr, fastNaiveBayes, knitr, lsa, microbenchmark,
-        naivebayes, quanteda.textplots, spelling, RColorBrewer,
-        testthat, rmarkdown
+        naivebayes, quanteda.textplots, spelling, testthat, rmarkdown
 LinkingTo: Rcpp, RcppParallel, RcppArmadillo (>= 0.7.600.1.0), quanteda
 URL: https://github.com/quanteda/quanteda.textmodels
 License: GPL-3
@@ -43,7 +42,7 @@ Collate: 'RcppExports.R' 'quanteda.textmodels-package.R'
         'textmodel_wordscores.R' 'textplot_influence.R' 'utils.R'
 VignetteBuilder: knitr
 NeedsCompilation: yes
-Packaged: 2021-03-05 08:04:47 UTC; kbenoit
+Packaged: 2021-03-30 08:24:43 UTC; kbenoit
 Author: Kenneth Benoit [cre, aut, cph]
     (<https://orcid.org/0000-0002-0797-564X>),
   Kohei Watanabe [aut] (<https://orcid.org/0000-0001-6519-5265>),
@@ -56,4 +55,4 @@ Author: Kenneth Benoit [cre, aut, cph]
   European Research Council [fnd] (ERC-2011-StG 283794-QUANTESS)
 Maintainer: Kenneth Benoit <kbenoit@lse.ac.uk>
 Repository: CRAN
-Date/Publication: 2021-03-07 22:40:02 UTC
+Date/Publication: 2021-04-06 07:30:09 UTC
