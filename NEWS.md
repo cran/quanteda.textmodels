@@ -1,4 +1,8 @@
-# quanteda.textmodels 0.9.3
+# quanteda.textmodels 0.9.5
+
+* Fixes for compatibility with Matrix 1.4.2.
+
+# quanteda.textmodels 0.9.4
 
 * removed `data_dfm_lbgexample` as this is already in **quanteda**.
 

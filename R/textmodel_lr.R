@@ -90,7 +90,8 @@ textmodel_lr.dfm <- function(x, y, ...) {
     )
 
     result <- list(
-        x = x, y = y,
+        x = x,
+        y = y,
         algorithm = paste(family, "logistic regression"),
         type = family,
         classnames = lrfitted[["glmnet.fit"]][["classnames"]],
