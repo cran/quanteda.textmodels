@@ -10,7 +10,7 @@ library("quanteda")
 
 ## -----------------------------------------------------------------------------
 # large movie review database of 50,000 movie reviews
-load(url("https://www.dropbox.com/s/sjdfmx8ggwfda5o/data_corpus_LMRD.rda?dl=1"))
+load(url("https://quanteda.org/data/data_corpus_LMRD.rda"))
 
 dfmat <- tokens(data_corpus_LMRD) %>%
   dfm()

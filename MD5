@@ -1,4 +1,4 @@
-967524052b6918af6a8b3737baee80a1 *DESCRIPTION
+65a2741cbd9c553d25dca25efcaf3b6c *DESCRIPTION
 9a20ea875089cf6277606fd5e74b16e8 *NAMESPACE
 3234b2a97595c3946e0e513d352cdd17 *NEWS.md
 258c9b2a1487b2df888ebaf85520cdc2 *R/RcppExports.R
@@ -24,9 +24,9 @@ d05676ff134748b29fe081e29a3cf63e *R/utils.R
 22a17e4fae4e65b04112bdd291c702b5 *data/data_corpus_irishbudget2010.rda
 a5aa1b1bf1866dbb893fd96310196f22 *data/data_corpus_moviereviews.rda
 ba6839c448970d11698d3a5247063638 *inst/WORDLIST
-482ef0c8077e4de6b9a7fbbcc188c66c *inst/doc/textmodel_performance.R
-267d6b07ad96a5556c1f0c64bd547054 *inst/doc/textmodel_performance.Rmd
-03d2f58bb5a116e9affb0dfd0a3bf268 *inst/doc/textmodel_performance.html
+dcbcb8d8d873044a8b0ae272cd4c9622 *inst/doc/textmodel_performance.R
+746d70a5b34c39d9aa7d8c7258fe760d *inst/doc/textmodel_performance.Rmd
+0c9277e6355d3fa66ac86daf0be396d8 *inst/doc/textmodel_performance.html
 fb522e7db5891b1e776038752bc949a7 *man/affinity.Rd
 60ac88a9d8c6dcd576b9a1d5993d4665 *man/as.coefficients_textmodel.Rd
 a934e68f58ced73b1939cf93f5cc85af *man/as.matrix.csr.dfm.Rd
@@ -96,4 +96,4 @@ beec28440950a561a71074f81b45ff9b *tests/testthat/test-textmodel_svmlin.R
 7f2ee22b4bbcbee3e10c5726b8a80bb2 *tests/testthat/test-textmodel_wordfish.R
 916076393b3bbf1b005b37df69a871c5 *tests/testthat/test-textmodel_wordscores.R
 e4550e8a471ebe2bd4672d99fcdebf24 *tests/testthat/test-utils.R
-267d6b07ad96a5556c1f0c64bd547054 *vignettes/textmodel_performance.Rmd
+746d70a5b34c39d9aa7d8c7258fe760d *vignettes/textmodel_performance.Rmd
