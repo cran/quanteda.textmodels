@@ -342,13 +342,13 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;quanteda.textmodels&quot;</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;quanteda&quot;</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Package version: 3.2.3</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Unicode version: 14.0</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="do">## ICU version: 70.1</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Parallel computing: 10 of 10 threads used.</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="do">## See https://quanteda.io for tutorials and examples.</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;quanteda&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Package version: 3.2.5</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Unicode version: 14.0</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="do">## ICU version: 71.1</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Parallel computing: 10 of 10 threads used.</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="do">## See https://quanteda.io for tutorials and examples.</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;quanteda.textmodels&quot;</span>)</span></code></pre></div>
 <div id="naive-bayes" class="section level2">
 <h2>Naive Bayes</h2>
 <p><strong>quanteda.textmodels</strong> implements fast methods for
@@ -379,9 +379,9 @@ training sets for training and fitting our models.</p>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="do">## dfmat_train$polarity, : less accurate nanosecond times to avoid potential</span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="do">## integer overflows</span></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Unit: milliseconds</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="do">##   expr      min       lq     mean   median       uq       max neval</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  multi 61.39000 64.11133 66.99309 65.77839 68.45346  83.24009    20</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="do">##   bern 71.24263 72.95905 78.45931 76.31775 82.19606 101.66655    20</span></span></code></pre></div>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="do">##   expr      min       lq     mean   median       uq      max neval</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  multi 57.51496 59.61240 60.94069 60.41127 61.40837 71.28518    20</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="do">##   bern 65.50394 67.49475 74.66298 75.15694 80.91059 86.06970    20</span></span></code></pre></div>
 <p>And for prediction:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">multi =</span> <span class="fu">predict</span>(<span class="fu">textmodel_nb</span>(dfmat_train, dfmat_train<span class="sc">$</span>polarity, <span class="at">distribution =</span> <span class="st">&quot;multinomial&quot;</span>),</span>
@@ -391,9 +391,9 @@ training sets for training and fitting our models.</p>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">times =</span> <span class="dv">20</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Unit: milliseconds</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="do">##   expr       min        lq      mean    median        uq      max neval</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  multi  73.78959  76.19046  80.88285  77.25919  79.75921 108.1905    20</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="do">##   bern 105.20981 106.44771 114.85248 112.08242 124.13461 132.1529    20</span></span></code></pre></div>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="do">##   expr      min        lq      mean    median        uq       max neval</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  multi 69.19012  70.62748  74.89261  72.12195  82.20672  84.92847    20</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="do">##   bern 98.69926 103.15457 113.37922 109.13323 114.31378 209.02530    20</span></span></code></pre></div>
 <p>Now let’s see how <code>textmodel_nb()</code> compares to equivalent
 functions from other packages. Multinomial:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;fastNaiveBayes&quot;</span>)</span>
@@ -416,15 +416,11 @@ functions from other packages. Multinomial:</p>
 <span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">times =</span> <span class="dv">20</span></span>
 <span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Unit: milliseconds</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="do">##            expr       min        lq     mean    median        uq       max</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="do">##      textmodels  74.15322  77.37278  80.6312  78.65249  81.30023  96.74073</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="do">##  fastNaiveBayes 100.90112 104.12653 110.8884 108.84645 116.13853 135.95924</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="do">##      naivebayes  83.41003  87.28964 100.0759  89.05637  92.83388 271.13074</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="do">##  neval</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="do">##     20</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="do">##     20</span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="do">##     20</span></span></code></pre></div>
-<p>And Bernoulli. Note here that while we are supplying the boolean
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="do">##            expr      min       lq     mean   median       uq      max neval</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="do">##      textmodels 67.24242 68.50483 73.75045 69.56937 77.97316  89.5873    20</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="do">##  fastNaiveBayes 92.94659 94.14844 98.15999 96.64456 99.96038 107.6829    20</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="do">##      naivebayes 79.81048 81.43014 95.43330 85.33449 87.74892 278.7189    20</span></span></code></pre></div>
+<p>And Bernoulli. Note here that while we are supplying the Boolean
 matrix to <code>textmodel_nb()</code>, this re-weighting from the count
 matrix would have been performed automatically within the function had
 we not done so in advance - it’s done here just for comparison.</p>
@@ -448,9 +444,9 @@ we not done so in advance - it’s done here just for comparison.</p>
 <span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Unit: milliseconds</span></span>
 <span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="do">##            expr       min        lq     mean   median       uq      max neval</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="do">##      textmodels 104.86525 107.91493 117.5311 116.7810 126.6451 131.5138    20</span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  fastNaiveBayes 114.11329 116.01469 125.5177 123.1699 131.8557 146.4291    20</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="do">##      naivebayes  96.52031  98.37962 107.5170 100.7663 102.7416 201.5234    20</span></span></code></pre></div>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="do">##      textmodels  97.20604 100.37224 107.3485 107.9191 111.5670 124.8818    20</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  fastNaiveBayes 105.96520 107.88027 113.5174 115.6564 117.6728 120.8316    20</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="do">##      naivebayes  92.22064  94.37407 103.9120 100.9323 105.4600 185.5323    20</span></span></code></pre></div>
 </div>
 <div id="references" class="section level2">
 <h2>References</h2>
@@ -467,8 +463,8 @@ the Naive Bayes Algorithm in R</em>. R package version 0.9.7, &lt;URL:
 University Press.</p>
 <p>Skogholt, Martin (2020). <em>fastNaiveBayes: Extremely Fast
 Implementation of a Naive Bayes Classifier</em>. R package version
-2.2.0. <a href="https://github.com/mskogholt/fastNaiveBayes" class="uri">https://github.com/mskogholt/fastNaiveBayes</a>. Date:
-2020-02-23.</p>
+2.2.1. <a href="https://github.com/mskogholt/fastNaiveBayes" class="uri">https://github.com/mskogholt/fastNaiveBayes</a>. Date:
+2020-05-04.</p>
 </div>
 
 
