@@ -342,13 +342,13 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;quanteda&quot;</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Package version: 3.2.5</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Unicode version: 14.0</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="do">## ICU version: 71.1</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Parallel computing: 10 of 10 threads used.</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="do">## See https://quanteda.io for tutorials and examples.</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;quanteda.textmodels&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;quanteda&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="do">## Package version: 4.0.1</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="do">## Unicode version: 14.0</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="do">## ICU version: 71.1</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="do">## Parallel computing: disabled</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="do">## See https://quanteda.io for tutorials and examples.</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;quanteda.textmodels&quot;</span>)</span></code></pre></div>
 <div id="naive-bayes" class="section level2">
 <h2>Naive Bayes</h2>
 <p><strong>quanteda.textmodels</strong> implements fast methods for
@@ -361,92 +361,102 @@ performance from two other packages for fitting these models.</p>
 <p>For these tests, we will choose the dataset of 50,000 movie reviews
 from Maas et. al. (2011). We will use their partition into test and
 training sets for training and fitting our models.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># large movie review database of 50,000 movie reviews</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">&quot;https://quanteda.org/data/data_corpus_LMRD.rda&quot;</span>))</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>dfmat <span class="ot">&lt;-</span> <span class="fu">tokens</span>(data_corpus_LMRD) <span class="sc">%&gt;%</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dfm</span>()</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>dfmat_train <span class="ot">&lt;-</span> <span class="fu">dfm_subset</span>(dfmat, set <span class="sc">==</span> <span class="st">&quot;train&quot;</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>dfmat_test <span class="ot">&lt;-</span> <span class="fu">dfm_subset</span>(dfmat, set <span class="sc">==</span> <span class="st">&quot;test&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># large movie review database of 50,000 movie reviews</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">&quot;https://quanteda.org/data/data_corpus_LMRD.rda&quot;</span>))</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>dfmat <span class="ot">&lt;-</span> <span class="fu">tokens</span>(data_corpus_LMRD) <span class="sc">%&gt;%</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>  <span class="fu">dfm</span>()</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>dfmat_train <span class="ot">&lt;-</span> <span class="fu">dfm_subset</span>(dfmat, set <span class="sc">==</span> <span class="st">&quot;train&quot;</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>dfmat_test <span class="ot">&lt;-</span> <span class="fu">dfm_subset</span>(dfmat, set <span class="sc">==</span> <span class="st">&quot;test&quot;</span>)</span></code></pre></div>
 <p>Comparing the performance of fitting the model:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;microbenchmark&quot;</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">multi =</span> <span class="fu">textmodel_nb</span>(dfmat_train, dfmat_train<span class="sc">$</span>polarity, <span class="at">distribution =</span> <span class="st">&quot;multinomial&quot;</span>),</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">bern =</span> <span class="fu">textmodel_nb</span>(dfmat_train, dfmat_train<span class="sc">$</span>polarity, <span class="at">distribution =</span> <span class="st">&quot;Bernoulli&quot;</span>),</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">times =</span> <span class="dv">20</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning in microbenchmark(multi = textmodel_nb(dfmat_train,</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="do">## dfmat_train$polarity, : less accurate nanosecond times to avoid potential</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="do">## integer overflows</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Unit: milliseconds</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="do">##   expr      min       lq     mean   median       uq      max neval</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  multi 57.51496 59.61240 60.94069 60.41127 61.40837 71.28518    20</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="do">##   bern 65.50394 67.49475 74.66298 75.15694 80.91059 86.06970    20</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;microbenchmark&quot;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>    <span class="at">multi =</span> <span class="fu">textmodel_nb</span>(dfmat_train, dfmat_train<span class="sc">$</span>polarity, <span class="at">distribution =</span> <span class="st">&quot;multinomial&quot;</span>),</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>    <span class="at">bern =</span> <span class="fu">textmodel_nb</span>(dfmat_train, dfmat_train<span class="sc">$</span>polarity, <span class="at">distribution =</span> <span class="st">&quot;Bernoulli&quot;</span>),</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>    <span class="at">times =</span> <span class="dv">20</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>)</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="do">## Warning in microbenchmark(multi = textmodel_nb(dfmat_train,</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="do">## dfmat_train$polarity, : less accurate nanosecond times to avoid potential</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="do">## integer overflows</span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="do">## Unit: milliseconds</span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="do">##   expr      min       lq     mean   median       uq      max neval cld</span></span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="do">##  multi 50.83127 51.56771 64.86338 59.03010 62.54054 147.6292    20   a</span></span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="do">##   bern 58.01836 66.80708 71.62813 68.35528 69.48256 142.3839    20   a</span></span></code></pre></div>
 <p>And for prediction:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">multi =</span> <span class="fu">predict</span>(<span class="fu">textmodel_nb</span>(dfmat_train, dfmat_train<span class="sc">$</span>polarity, <span class="at">distribution =</span> <span class="st">&quot;multinomial&quot;</span>),</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">newdata =</span> dfmat_test),</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">bern =</span> <span class="fu">predict</span>(<span class="fu">textmodel_nb</span>(dfmat_train, dfmat_train<span class="sc">$</span>polarity, <span class="at">distribution =</span> <span class="st">&quot;Bernoulli&quot;</span>),</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">newdata =</span> dfmat_test),</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">times =</span> <span class="dv">20</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Unit: milliseconds</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="do">##   expr      min        lq      mean    median        uq       max neval</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  multi 69.19012  70.62748  74.89261  72.12195  82.20672  84.92847    20</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="do">##   bern 98.69926 103.15457 113.37922 109.13323 114.31378 209.02530    20</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>    <span class="at">multi =</span> <span class="fu">predict</span>(<span class="fu">textmodel_nb</span>(dfmat_train, dfmat_train<span class="sc">$</span>polarity, <span class="at">distribution =</span> <span class="st">&quot;multinomial&quot;</span>),</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>                    <span class="at">newdata =</span> dfmat_test),</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>    <span class="at">bern =</span> <span class="fu">predict</span>(<span class="fu">textmodel_nb</span>(dfmat_train, dfmat_train<span class="sc">$</span>polarity, <span class="at">distribution =</span> <span class="st">&quot;Bernoulli&quot;</span>),</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>                   <span class="at">newdata =</span> dfmat_test),</span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>    <span class="at">times =</span> <span class="dv">20</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>)</span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="do">## Unit: milliseconds</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="do">##   expr      min       lq     mean   median       uq      max neval cld</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="do">##  multi 57.55937 58.91091 67.68381 65.34137 67.42403 148.6692    20  a </span></span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="do">##   bern 82.82636 90.40652 92.33755 91.81712 95.12195 103.6249    20   b</span></span></code></pre></div>
 <p>Now let’s see how <code>textmodel_nb()</code> compares to equivalent
 functions from other packages. Multinomial:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;fastNaiveBayes&quot;</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;naivebayes&quot;</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="do">## naivebayes 0.9.7 loaded</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">textmodels =</span> {</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      tmod <span class="ot">&lt;-</span>  <span class="fu">textmodel_nb</span>(dfmat_train, dfmat_train<span class="sc">$</span>polarity, <span class="at">smooth =</span> <span class="dv">1</span>, <span class="at">distribution =</span> <span class="st">&quot;multinomial&quot;</span>)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>      pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(tmod, <span class="at">newdata =</span> dfmat_test)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    },</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">fastNaiveBayes =</span> { </span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>      tmod <span class="ot">&lt;-</span> <span class="fu">fnb.multinomial</span>(<span class="fu">as</span>(dfmat_train, <span class="st">&quot;dgCMatrix&quot;</span>), <span class="at">y =</span> dfmat_train<span class="sc">$</span>polarity, <span class="at">laplace =</span> <span class="dv">1</span>, <span class="at">sparse =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>      pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(tmod, <span class="at">newdata =</span> <span class="fu">as</span>(dfmat_test, <span class="st">&quot;dgCMatrix&quot;</span>))</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    },</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">naivebayes =</span> {</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>      tmod <span class="ot">=</span> <span class="fu">multinomial_naive_bayes</span>(<span class="fu">as</span>(dfmat_train, <span class="st">&quot;dgCMatrix&quot;</span>), dfmat_train<span class="sc">$</span>polarity, <span class="at">laplace =</span> <span class="dv">1</span>)</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>      pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(tmod, <span class="at">newdata =</span> <span class="fu">as</span>(dfmat_test, <span class="st">&quot;dgCMatrix&quot;</span>))</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    },</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">times =</span> <span class="dv">20</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Unit: milliseconds</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="do">##            expr      min       lq     mean   median       uq      max neval</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="do">##      textmodels 67.24242 68.50483 73.75045 69.56937 77.97316  89.5873    20</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="do">##  fastNaiveBayes 92.94659 94.14844 98.15999 96.64456 99.96038 107.6829    20</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="do">##      naivebayes 79.81048 81.43014 95.43330 85.33449 87.74892 278.7189    20</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;fastNaiveBayes&quot;</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;naivebayes&quot;</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="do">## naivebayes 1.0.0 loaded</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="do">## For more information please visit:</span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="do">## https://majkamichal.github.io/naivebayes/</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>    <span class="at">textmodels =</span> {</span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a>      tmod <span class="ot">&lt;-</span>  <span class="fu">textmodel_nb</span>(dfmat_train, dfmat_train<span class="sc">$</span>polarity, <span class="at">smooth =</span> <span class="dv">1</span>, <span class="at">distribution =</span> <span class="st">&quot;multinomial&quot;</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a>      pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(tmod, <span class="at">newdata =</span> dfmat_test)</span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a>    },</span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a>    <span class="at">fastNaiveBayes =</span> { </span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a>      tmod <span class="ot">&lt;-</span> <span class="fu">fnb.multinomial</span>(<span class="fu">as</span>(dfmat_train, <span class="st">&quot;dgCMatrix&quot;</span>), <span class="at">y =</span> dfmat_train<span class="sc">$</span>polarity, <span class="at">laplace =</span> <span class="dv">1</span>, <span class="at">sparse =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a>      pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(tmod, <span class="at">newdata =</span> <span class="fu">as</span>(dfmat_test, <span class="st">&quot;dgCMatrix&quot;</span>))</span>
+<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a>    },</span>
+<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a>    <span class="at">naivebayes =</span> {</span>
+<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a>      tmod <span class="ot">=</span> <span class="fu">multinomial_naive_bayes</span>(<span class="fu">as</span>(dfmat_train, <span class="st">&quot;dgCMatrix&quot;</span>), dfmat_train<span class="sc">$</span>polarity, <span class="at">laplace =</span> <span class="dv">1</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a>      pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(tmod, <span class="at">newdata =</span> <span class="fu">as</span>(dfmat_test, <span class="st">&quot;dgCMatrix&quot;</span>))</span>
+<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a>    },</span>
+<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a>    <span class="at">times =</span> <span class="dv">20</span></span>
+<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a>)</span>
+<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a><span class="do">## Unit: milliseconds</span></span>
+<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a><span class="do">##            expr      min       lq      mean   median        uq      max neval</span></span>
+<span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a><span class="do">##      textmodels 57.66162 59.39572  65.20553 66.81821  68.27248  77.8911    20</span></span>
+<span id="cb5-25"><a href="#cb5-25" tabindex="-1"></a><span class="do">##  fastNaiveBayes 85.46265 91.71940 101.32351 98.01616 102.18373 178.8495    20</span></span>
+<span id="cb5-26"><a href="#cb5-26" tabindex="-1"></a><span class="do">##      naivebayes 68.98701 70.72477  83.34398 75.69656  81.87509 212.1918    20</span></span>
+<span id="cb5-27"><a href="#cb5-27" tabindex="-1"></a><span class="do">##  cld</span></span>
+<span id="cb5-28"><a href="#cb5-28" tabindex="-1"></a><span class="do">##  a  </span></span>
+<span id="cb5-29"><a href="#cb5-29" tabindex="-1"></a><span class="do">##   b </span></span>
+<span id="cb5-30"><a href="#cb5-30" tabindex="-1"></a><span class="do">##    c</span></span></code></pre></div>
 <p>And Bernoulli. Note here that while we are supplying the Boolean
 matrix to <code>textmodel_nb()</code>, this re-weighting from the count
 matrix would have been performed automatically within the function had
 we not done so in advance - it’s done here just for comparison.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dfmat_train_bern <span class="ot">&lt;-</span> <span class="fu">dfm_weight</span>(dfmat_train, <span class="at">scheme =</span> <span class="st">&quot;boolean&quot;</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>dfmat_test_bern <span class="ot">&lt;-</span> <span class="fu">dfm_weight</span>(dfmat_test, <span class="at">scheme =</span> <span class="st">&quot;boolean&quot;</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">textmodels =</span> {</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>      tmod <span class="ot">&lt;-</span>  <span class="fu">textmodel_nb</span>(dfmat_train_bern, dfmat_train<span class="sc">$</span>polarity, <span class="at">smooth =</span> <span class="dv">1</span>, <span class="at">distribution =</span> <span class="st">&quot;Bernoulli&quot;</span>)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>      pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(tmod, <span class="at">newdata =</span> dfmat_test)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    },</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">fastNaiveBayes =</span> { </span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>      tmod <span class="ot">&lt;-</span> <span class="fu">fnb.bernoulli</span>(<span class="fu">as</span>(dfmat_train_bern, <span class="st">&quot;dgCMatrix&quot;</span>), <span class="at">y =</span> dfmat_train<span class="sc">$</span>polarity, <span class="at">laplace =</span> <span class="dv">1</span>, <span class="at">sparse =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>      pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(tmod, <span class="at">newdata =</span> <span class="fu">as</span>(dfmat_test_bern, <span class="st">&quot;dgCMatrix&quot;</span>))</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    },</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">naivebayes =</span> {</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>      tmod <span class="ot">=</span> <span class="fu">bernoulli_naive_bayes</span>(<span class="fu">as</span>(dfmat_train_bern, <span class="st">&quot;dgCMatrix&quot;</span>), dfmat_train<span class="sc">$</span>polarity, <span class="at">laplace =</span> <span class="dv">1</span>)</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>      pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(tmod, <span class="at">newdata =</span> <span class="fu">as</span>(dfmat_test_bern, <span class="st">&quot;dgCMatrix&quot;</span>))</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    },</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">times =</span> <span class="dv">20</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Unit: milliseconds</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="do">##            expr       min        lq     mean   median       uq      max neval</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="do">##      textmodels  97.20604 100.37224 107.3485 107.9191 111.5670 124.8818    20</span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  fastNaiveBayes 105.96520 107.88027 113.5174 115.6564 117.6728 120.8316    20</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="do">##      naivebayes  92.22064  94.37407 103.9120 100.9323 105.4600 185.5323    20</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>dfmat_train_bern <span class="ot">&lt;-</span> <span class="fu">dfm_weight</span>(dfmat_train, <span class="at">scheme =</span> <span class="st">&quot;boolean&quot;</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>dfmat_test_bern <span class="ot">&lt;-</span> <span class="fu">dfm_weight</span>(dfmat_test, <span class="at">scheme =</span> <span class="st">&quot;boolean&quot;</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>    <span class="at">textmodel_nb =</span> {</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>      tmod <span class="ot">&lt;-</span>  <span class="fu">textmodel_nb</span>(dfmat_train_bern, dfmat_train<span class="sc">$</span>polarity, <span class="at">smooth =</span> <span class="dv">1</span>, <span class="at">distribution =</span> <span class="st">&quot;Bernoulli&quot;</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>      pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(tmod, <span class="at">newdata =</span> dfmat_test)</span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>    },</span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>    <span class="at">fastNaiveBayes =</span> { </span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a>      tmod <span class="ot">&lt;-</span> <span class="fu">fnb.bernoulli</span>(<span class="fu">as</span>(dfmat_train_bern, <span class="st">&quot;dgCMatrix&quot;</span>), <span class="at">y =</span> dfmat_train<span class="sc">$</span>polarity, <span class="at">laplace =</span> <span class="dv">1</span>, <span class="at">sparse =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a>      pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(tmod, <span class="at">newdata =</span> <span class="fu">as</span>(dfmat_test_bern, <span class="st">&quot;dgCMatrix&quot;</span>))</span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a>    },</span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a>    <span class="at">naivebayes =</span> {</span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a>      tmod <span class="ot">=</span> <span class="fu">bernoulli_naive_bayes</span>(<span class="fu">as</span>(dfmat_train_bern, <span class="st">&quot;dgCMatrix&quot;</span>), dfmat_train<span class="sc">$</span>polarity, <span class="at">laplace =</span> <span class="dv">1</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a>      pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(tmod, <span class="at">newdata =</span> <span class="fu">as</span>(dfmat_test_bern, <span class="st">&quot;dgCMatrix&quot;</span>))</span>
+<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a>    },</span>
+<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a>    <span class="at">times =</span> <span class="dv">20</span></span>
+<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a>)</span>
+<span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a><span class="do">## Unit: milliseconds</span></span>
+<span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a><span class="do">##            expr      min       lq      mean    median        uq      max neval</span></span>
+<span id="cb6-21"><a href="#cb6-21" tabindex="-1"></a><span class="do">##    textmodel_nb 84.15849 86.64536  94.62188  94.09139 100.34684 112.4117    20</span></span>
+<span id="cb6-22"><a href="#cb6-22" tabindex="-1"></a><span class="do">##  fastNaiveBayes 94.04449 98.89282 108.01997 104.90315 107.18821 189.3230    20</span></span>
+<span id="cb6-23"><a href="#cb6-23" tabindex="-1"></a><span class="do">##      naivebayes 75.77546 76.96858  86.13614  83.53652  87.03496 168.9143    20</span></span>
+<span id="cb6-24"><a href="#cb6-24" tabindex="-1"></a><span class="do">##  cld</span></span>
+<span id="cb6-25"><a href="#cb6-25" tabindex="-1"></a><span class="do">##   a </span></span>
+<span id="cb6-26"><a href="#cb6-26" tabindex="-1"></a><span class="do">##    b</span></span>
+<span id="cb6-27"><a href="#cb6-27" tabindex="-1"></a><span class="do">##   a</span></span></code></pre></div>
 </div>
 <div id="references" class="section level2">
 <h2>References</h2>

@@ -24,9 +24,8 @@
 #'   class affinities
 #' * `call` the model call
 #' @author Patrick Perry and Kenneth Benoit
-#' @references Perry, P.O. & Benoit, K.R. (2017). Scaling Text with
-#'   the Class Affinity Model.
-#'   [arXiv:1710.08963 \[stat.ML\]](https://arxiv.org/abs/1710.08963).
+#' @references Perry, P.O. & Benoit, K.R. (2017). Scaling Text with the Class
+#'   Affinity Model. \doi{https://doi.org/10.48550/arXiv.1710.08963}.
 #' @examples
 #' (af <- textmodel_affinity(quanteda::data_dfm_lbgexample, y = c("L", NA, NA, NA, "R", NA)))
 #' predict(af)
@@ -835,13 +834,13 @@ print.summary.influence.predict.textmodel_affinity <- function(x, n = 30, ...) {
 
 # ========= Internal functions =========
 
-# compute chi^2 goodness of fit
-gof_chi2 <- function(x) {
-    UseMethod("gof_chi2")
-}
-gof_chi2.predict.textmodel_affinity <- function(x) {
-    rowSums(rstandard(x)[,x$support,drop=FALSE]^2)
-}
+# # compute chi^2 goodness of fit
+# gof_chi2 <- function(x) {
+#     UseMethod("gof_chi2")
+# }
+# gof_chi2.predict.textmodel_affinity <- function(x) {
+#     rowSums(rstandard(x)[,x$support,drop=FALSE]^2)
+# }
 
 # function to interleave two vector objects
 # Example:
