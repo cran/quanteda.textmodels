@@ -1,7 +1,7 @@
 Package: quanteda.textmodels
 Type: Package
 Title: Scaling Models and Classifiers for Textual Data
-Version: 0.9.8
+Version: 0.9.9
 Description: Scaling models and classifiers for sparse matrix objects representing 
     textual data in the form of a document-feature matrix.  Includes original 
     implementations of 'Laver', 'Benoit', and Garry's (2003) <doi:10.1017/S0003055403000698>,
@@ -41,7 +41,7 @@ Collate: 'RcppExports.R' 'quanteda.textmodels-package.R'
         'textmodel_wordscores.R' 'textplot_influence.R' 'utils.R'
 VignetteBuilder: knitr
 NeedsCompilation: yes
-Packaged: 2024-08-28 15:48:03 UTC; kbenoit
+Packaged: 2024-09-03 09:13:57 UTC; kbenoit
 Author: Kenneth Benoit [cre, aut, cph]
     (<https://orcid.org/0000-0002-0797-564X>),
   Kohei Watanabe [aut] (<https://orcid.org/0000-0001-6519-5265>),
@@ -54,4 +54,4 @@ Author: Kenneth Benoit [cre, aut, cph]
   European Research Council [fnd] (ERC-2011-StG 283794-QUANTESS)
 Maintainer: Kenneth Benoit <kbenoit@lse.ac.uk>
 Repository: CRAN
-Date/Publication: 2024-08-29 07:30:02 UTC
+Date/Publication: 2024-09-03 16:00:02 UTC
