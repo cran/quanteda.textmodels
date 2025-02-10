@@ -343,7 +343,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;quanteda&quot;</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="do">## Package version: 4.1.0</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="do">## Package version: 4.2.0</span></span>
 <span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="do">## Unicode version: 14.0</span></span>
 <span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="do">## ICU version: 71.1</span></span>
 <span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="do">## Parallel computing: 10 of 10 threads used.</span></span>
@@ -379,9 +379,9 @@ training sets for training and fitting our models.</p>
 <span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="do">## dfmat_train$polarity, : less accurate nanosecond times to avoid potential</span></span>
 <span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="do">## integer overflows</span></span>
 <span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="do">## Unit: milliseconds</span></span>
-<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="do">##   expr      min       lq     mean   median       uq       max neval</span></span>
-<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="do">##  multi 53.48532 53.83255 58.29222 55.66174 63.86882  66.14026    20</span></span>
-<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="do">##   bern 61.52206 69.89108 78.93381 71.93561 74.12189 154.88578    20</span></span></code></pre></div>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="do">##   expr      min       lq     mean   median       uq      max neval</span></span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="do">##  multi 51.45061 52.28271 60.59049 54.32045 61.75426 136.8729    20</span></span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="do">##   bern 58.58859 61.19004 70.56123 68.16055 70.70653 141.3598    20</span></span></code></pre></div>
 <p>And for prediction:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>    <span class="at">multi =</span> <span class="fu">predict</span>(<span class="fu">textmodel_nb</span>(dfmat_train, dfmat_train<span class="sc">$</span>polarity, <span class="at">distribution =</span> <span class="st">&quot;multinomial&quot;</span>),</span>
@@ -391,9 +391,9 @@ training sets for training and fitting our models.</p>
 <span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>    <span class="at">times =</span> <span class="dv">20</span></span>
 <span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>)</span>
 <span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="do">## Unit: milliseconds</span></span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="do">##   expr      min       lq      mean   median        uq       max neval</span></span>
-<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="do">##  multi 61.13498 61.60338  67.75137 70.58433  71.86597  74.30065    20</span></span>
-<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="do">##   bern 88.72966 96.26019 102.02488 98.10093 100.94958 181.06506    20</span></span></code></pre></div>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="do">##   expr      min       lq     mean   median       uq       max neval</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="do">##  multi 59.05677 59.87156 65.00725 64.46526 70.04485  72.35036    20</span></span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="do">##   bern 85.30874 92.33995 99.03242 96.51304 98.96039 171.86191    20</span></span></code></pre></div>
 <p>Now let’s see how <code>textmodel_nb()</code> compares to equivalent
 functions from other packages. Multinomial:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;fastNaiveBayes&quot;</span>)</span>
@@ -418,10 +418,10 @@ functions from other packages. Multinomial:</p>
 <span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a>    <span class="at">times =</span> <span class="dv">20</span></span>
 <span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a>)</span>
 <span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a><span class="do">## Unit: milliseconds</span></span>
-<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a><span class="do">##            expr      min        lq      mean    median        uq      max neval</span></span>
-<span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a><span class="do">##      textmodels 61.03092  62.42500  66.26935  63.94071  71.24055  77.9166    20</span></span>
-<span id="cb5-25"><a href="#cb5-25" tabindex="-1"></a><span class="do">##  fastNaiveBayes 92.28674 100.67160 106.88356 103.47129 104.79010 184.0025    20</span></span>
-<span id="cb5-26"><a href="#cb5-26" tabindex="-1"></a><span class="do">##      naivebayes 73.57864  76.28413  88.55177  82.82295  85.40671 225.7032    20</span></span></code></pre></div>
+<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a><span class="do">##            expr      min       lq      mean    median        uq       max neval</span></span>
+<span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a><span class="do">##      textmodels 58.57506 60.06543  64.85441  62.21453  69.41526  73.30976    20</span></span>
+<span id="cb5-25"><a href="#cb5-25" tabindex="-1"></a><span class="do">##  fastNaiveBayes 88.26291 96.98521 100.10928 100.05087 103.10463 111.23460    20</span></span>
+<span id="cb5-26"><a href="#cb5-26" tabindex="-1"></a><span class="do">##      naivebayes 70.81520 71.47522  89.52677  78.18112  82.76117 251.39519    20</span></span></code></pre></div>
 <p>And Bernoulli. Note here that while we are supplying the Boolean
 matrix to <code>textmodel_nb()</code>, this re-weighting from the count
 matrix would have been performed automatically within the function had
@@ -446,9 +446,9 @@ we not done so in advance - it’s done here just for comparison.</p>
 <span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a>)</span>
 <span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a><span class="do">## Unit: milliseconds</span></span>
 <span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a><span class="do">##            expr      min        lq      mean    median        uq      max neval</span></span>
-<span id="cb6-21"><a href="#cb6-21" tabindex="-1"></a><span class="do">##    textmodel_nb 87.96353  96.28247  99.24511  98.77507 102.97835 112.9129    20</span></span>
-<span id="cb6-22"><a href="#cb6-22" tabindex="-1"></a><span class="do">##  fastNaiveBayes 98.78708 105.73265 113.79462 112.13176 113.73429 190.6067    20</span></span>
-<span id="cb6-23"><a href="#cb6-23" tabindex="-1"></a><span class="do">##      naivebayes 79.12381  81.19800  91.04372  87.51110  91.56138 176.1217    20</span></span></code></pre></div>
+<span id="cb6-21"><a href="#cb6-21" tabindex="-1"></a><span class="do">##    textmodel_nb 84.96885  94.91449 101.09729  97.39626  99.39509 176.4982    20</span></span>
+<span id="cb6-22"><a href="#cb6-22" tabindex="-1"></a><span class="do">##  fastNaiveBayes 95.70810 107.45432 114.73058 112.01850 116.23123 193.6231    20</span></span>
+<span id="cb6-23"><a href="#cb6-23" tabindex="-1"></a><span class="do">##      naivebayes 76.38817  80.72086  87.82437  82.17314  92.54163 129.7558    20</span></span></code></pre></div>
 </div>
 <div id="references" class="section level2">
 <h2>References</h2>

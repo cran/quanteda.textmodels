@@ -29,13 +29,13 @@ dfmat_train <- dfm_subset(dfmat, set == "train")
 dfmat_test <- dfm_subset(dfmat, set == "test")
 
 ## ----eval = FALSE-------------------------------------------------------------
-#  # large movie review database of 50,000 movie reviews
-#  load(url("https://quanteda.org/data/data_corpus_LMRD.rda"))
-#  
-#  dfmat <- tokens(data_corpus_LMRD) %>%
-#    dfm()
-#  dfmat_train <- dfm_subset(dfmat, set == "train")
-#  dfmat_test <- dfm_subset(dfmat, set == "test")
+# # large movie review database of 50,000 movie reviews
+# load(url("https://quanteda.org/data/data_corpus_LMRD.rda"))
+# 
+# dfmat <- tokens(data_corpus_LMRD) %>%
+#   dfm()
+# dfmat_train <- dfm_subset(dfmat, set == "train")
+# dfmat_test <- dfm_subset(dfmat, set == "test")
 
 ## -----------------------------------------------------------------------------
 library("microbenchmark")
